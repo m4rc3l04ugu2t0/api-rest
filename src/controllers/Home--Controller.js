@@ -1,8 +1,14 @@
+import Student from "../models/Students.js";
+
+
 class HomeController {
-  index(req, res) {
-    res.json({
-      response: 'helloooooo',
-    });
+  async index(req, res) {
+    const newStudent = await Student.create({
+      firstName: 'Marcelo',
+      secondName: 'Augusto',
+      email: 'mrcelo014@gmail.com'
+    })
+    res.json(newStudent);
   }
 }
 

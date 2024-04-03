@@ -1,21 +1,25 @@
-require('dotenv').config()
+import 'dotenv/config'
 
-module.exports = {
-  dialect: 'mariadb',
-  host: process.env.DATABASE_HOST,
-  port: process.env.DATABASE_PORT,
-  username: process.env.DATABASE_USERNAME,
-  password: process.env.DATABASE_PASSWORD,
-  database: process.env.DATABASE,
-  define: {
-    timetimezone: 'America/Sao_Paulo',
-    underscored: true,
-    underscoredAll: true,
-    createdAt: 'created_at',
-    updatedAt: 'updated_at'
+export default  {
+  "development": {
+    "username": process.env.DATABASE_USERNAME,
+    "password": process.env.DATABASE_PASSWORD,
+    "database": process.env.DATABASE,
+    "host": process.env.DATABASE_HOST,
+    "dialect": "mariadb"
   },
-  dialectOptions: {
-    timezone: 'America/Sao_Paulo'
+  "test": {
+    "username": "root",
+    "password": 'MarceloAugustoDATABASE2050',
+    "database": "school",
+    "host": "localhost",
+    "dialect": "mariadb"
   },
-  timezone: 'America/Sao_Paulo'
+  "production": {
+    "username": "root",
+    "password": 'MarceloAugustoDATABASE2050',
+    "database": "school",
+    "host": "localhost",
+    "dialect": "mariadb"
+  }
 }
