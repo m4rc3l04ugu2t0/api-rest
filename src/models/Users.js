@@ -1,5 +1,5 @@
 import Sequelize, { Model } from "sequelize";
-import { hashSync, genSaltSync } from "bcrypt"
+import { hashSync, genSaltSync, compareSync } from "bcrypt"
 
 export default class User extends Model {
   static init(sequelize) {
@@ -50,5 +50,9 @@ export default class User extends Model {
       }
     })
     return this;
+  }
+
+  passwordIsValid(password) {
+    return compareSync(password, this.password_hash)
   }
 }
