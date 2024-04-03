@@ -45,7 +45,9 @@ export default class User extends Model {
     });
 
     this.addHook('beforeSave', (user) => {
-      user.password_hash = hashSync(user.password, genSaltSync(10))
+      if (user.password) {
+        user.password_hash = hashSync(user.password, genSaltSync(10))
+      }
     })
     return this;
   }
