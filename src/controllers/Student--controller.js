@@ -65,7 +65,6 @@ class StudentController {
 
       return res.json('Aluno atualizado com sucesso');
     } catch (error) {
-      console.log(error);
       return res.status(400).json({
         errors: error.errors.map((e) => e.message),
       });

@@ -2,8 +2,9 @@ import { Sequelize } from 'sequelize';
 import databaseConfig from '../config/database.mjs';
 import Student from '../models/Students.js';
 import User from '../models/Users.js';
+import Image from '../models/Images.js';
 
-const models = [Student, User];
+const models = [Student, User, Image];
 
 const connection = new Sequelize(
   databaseConfig.development.database,
@@ -28,4 +29,9 @@ const connection = new Sequelize(
 
 models.forEach((model) => {
   model.init(connection);
+});
+models.forEach((model) => {
+  if (model.associate) {
+    model.associate(connection.models);
+  }
 });

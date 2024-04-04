@@ -24,8 +24,6 @@ export default async (req, res, next) => {
       },
     });
 
-    console.log('user:', user, 'token:', data);
-
     if (!user) {
       return res.status(401).json({
         errors: ['Usuario invalido'],
