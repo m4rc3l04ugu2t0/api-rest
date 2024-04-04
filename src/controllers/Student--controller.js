@@ -28,7 +28,7 @@ class StudentController {
           errors: ['Invalido'],
         });
       }
-      const student = await Student.findOne(id);
+      const student = await Student.findByPk(id);
 
       if (!student) {
         return res.status(401).res({

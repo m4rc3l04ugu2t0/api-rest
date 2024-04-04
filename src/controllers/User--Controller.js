@@ -3,6 +3,7 @@ import User from '../models/Users.js';
 class UserController {
   async store(req, res) {
     try {
+      await User.create(req.body);
       return res.json('Usuario criado com sucesso');
     } catch (error) {
       return res.status(400).json({
@@ -35,7 +36,6 @@ class UserController {
   // update
   async update(req, res) {
     try {
-      console.log('up', req.userId);
       const user = await User.findByPk(req.userId);
 
       if (!user) {
