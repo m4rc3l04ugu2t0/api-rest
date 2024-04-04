@@ -1,36 +1,40 @@
-import 'dotenv/config.js'
-import User from "../models/Users.js";
-import jwt from "jsonwebtoken"
+import 'dotenv/config.js';
+import jwt from 'jsonwebtoken';
+import User from '../models/Users.js';
 
 class TokenController {
   async store(req, res) {
-    const  { email = '', password = '' } = req.body
+    const { email = '', password = '' } = req.body;
 
-  if (!email || !password) {
-    return res.status(401).json({
-      errors: ['Credenciais invalidas']
-    })
-  }
+    if (!email || !password) {
+      return res.status(401).json({
+        errors: ['Credenciais invalidas'],
+      });
+    }
 
-  const user = await User.findOne({ where: { email }})
+    const user = await User.findOne({ where: { email } });
 
-  if (!user) {
-    return res.status(401).json({
-      errors: ['User invalido']
-    })
-  }
+    if (!user) {
+      return res.status(401).json({
+        errors: ['User invalido'],
+      });
+    }
 
-  if (!user.passwordIsValid(password)) {
-    return res.status(401).json({
-      errors: ['Senha invalida']
-    })
-  }
+    if (!user.passwordIsValid(password)) {
+      return res.status(401).json({
+        errors: ['Senha invalida'],
+      });
+    }
 
-  const { id } = user
+    const { id } = user;
 
-  const token = jwt.sign({ id, email }, process.env.TOKEN_SECRET, { expiresIn: process.env.TOKEN_EXPIRATION })
+    const token = jwt.sign(
+      { id, email },
+      process.env.TOKEN_SECRET,
+      { expiresIn: process.env.TOKEN_EXPIRATION },
+    );
 
-  return res.json({ token });
+    return res.json({ token });
   }
 }
 

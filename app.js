@@ -1,10 +1,11 @@
-import 'dotenv/config.js'
-import './src/database/index.js'
+import 'dotenv/config.js';
+import './src/database/index.js';
 
 import express from 'express';
 import homeRouter from './src/routes/home--router.js';
 import userRouter from './src/routes/user--router.js';
-import tokenRouter from './src/routes/token--houter.js'
+import tokenRouter from './src/routes/token--houter.js';
+import studentRouter from './src/routes/student--router.js';
 
 class App {
   constructor() {
@@ -21,7 +22,8 @@ class App {
   routes() {
     this.app.use('/', homeRouter);
     this.app.use('/users/', userRouter);
-    this.app.use('/token/', tokenRouter)
+    this.app.use('/token/', tokenRouter);
+    this.app.use('/students/', studentRouter);
   }
 }
 

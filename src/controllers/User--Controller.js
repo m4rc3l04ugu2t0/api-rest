@@ -1,85 +1,77 @@
-import User from "../models/Users.js";
+import User from '../models/Users.js';
 
 class UserController {
   async store(req, res) {
     try {
-      const newUser = await User.create(req.body)
-      return res.json('Usuario criado com sucesso')
-    } catch(error) {
+      return res.json('Usuario criado com sucesso');
+    } catch (error) {
       return res.status(400).json({
-        errors: error.errors.map(e => e.message)
-      })
+        errors: error.errors.map((e) => e.message),
+      });
     }
   }
 
   // index
   async index(req, res) {
     try {
-      const users = await User.findAll({ attributes: [ 'id', 'email' ]})
-      return res.json(users)
-    } catch(error) {
-      return res.json(null)
+      const users = await User.findAll({ attributes: ['id', 'email'] });
+      return res.json(users);
+    } catch (error) {
+      return res.json(null);
     }
   }
 
   // show
   async show(req, res) {
     try {
-      const user = await User.findByPk(id)
-      const { id, name, email } = user
-      return res.json({id, name, email})
-    } catch(error) {
-      return res.json(null)
+      const user = await User.findByPk(req.userId);
+      const { id, name, email } = user;
+      return res.json({ id, name, email });
+    } catch (error) {
+      return res.json(null);
     }
   }
 
   // update
   async update(req, res) {
     try {
-      console.log('up', req.userId)
-      const user = await User.findByPk(req.userId)
+      console.log('up', req.userId);
+      const user = await User.findByPk(req.userId);
 
       if (!user) {
         return res.status(400).json({
-          errors: ['Usuario não encontrado!']
-        })
+          errors: ['Usuario não encontrado!'],
+        });
       }
 
-      const newData = await user.update(req.body)
-
-      return res.json('Usuario atualizado com sucesso')
-    } catch(error) {
+      return res.json('Usuario atualizado com sucesso');
+    } catch (error) {
       return res.status(400).json({
-        errors: error.errors.map(e => e.message)
-      })
+        errors: error.errors.map((e) => e.message),
+      });
     }
   }
-  catch(error) {
-    return res.status(400).json({
-      errors: error.errors.map(e => e.message)
-    })
-  }
+
   // delete
   async delete(req, res) {
     try {
-      const user = await User.findByPk(req.userId)
+      const user = await User.findByPk(req.userId);
 
       if (!user) {
         return res.status(400).json({
-          errors: ['Usuario não encontrado!']
-        })
+          errors: ['Usuario não encontrado!'],
+        });
       }
 
-      await user.destroy(req.userId)
+      await user.destroy(req.userId);
 
-      return res.json("Usuario deletado")
-    } catch(error) {
+      return res.json('Usuario deletado');
+    } catch (error) {
       return res.status(400).json({
-        errors: error.errors.map(e => e.message)
-      })
+        errors: error.errors.map((e) => e.message),
+      });
     }
   }
-
 }
 
-export default new UserController()
+export default new UserController();

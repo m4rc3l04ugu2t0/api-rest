@@ -11,6 +11,9 @@
     "rules": {
       "no-console": "off",
       "class-methods-use-this": "off",
-      "import/extensions": "never"
+      "import/extensions": ["error", "ignorePackages", {
+        "js": "always",
+        "mjs": "always"
+      }]
     }
 }
