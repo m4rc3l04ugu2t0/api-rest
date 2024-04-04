@@ -46,6 +46,7 @@ export default class User extends Model {
 
     this.addHook('beforeSave', (user) => {
       if (user.password) {
+        // eslint-disable-next-line no-param-reassign
         user.password_hash = hashSync(user.password, genSaltSync(10));
       }
     });
