@@ -14,10 +14,17 @@ class ImageController {
         });
       }
 
-      const { originalname, filename } = req.file;
-      const image = await Image.create({ originalname, filename });
+      try {
+        const { originalname, filename } = req.file;
+        const { student_id } = req.body;
+        const image = await Image.create({ originalname, filename, student_id });
 
-      return res.json(image);
+        return res.json(image);
+      } catch (err) {
+        return res.status(400).json({
+          errors: ['Aluno invalido'],
+        });
+      }
     });
   }
 }
