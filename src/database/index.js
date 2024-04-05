@@ -1,5 +1,5 @@
 import { Sequelize } from 'sequelize';
-import databaseConfig from '../config/database.mjs';
+import databaseConfig from '../config/database.js';
 import Student from '../models/Students.js';
 import User from '../models/Users.js';
 import Image from '../models/Images.js';

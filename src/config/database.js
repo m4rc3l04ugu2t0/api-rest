@@ -2,9 +2,6 @@ import 'dotenv/config';
 import { fileURLToPath } from 'url';
 import { dirname, resolve } from 'path';
 
-const fileName = fileURLToPath(import.meta.url);
-const dirName = dirname(fileName);
-
 export default {
   development: {
     username: process.env.DATABASE_USERNAME,
@@ -23,9 +20,9 @@ export default {
       timezone: 'America/Sao_Paulo',
     },
     timezone: 'America/Sao_Paulo',
-    modelsPath: resolve(dirName, 'src', 'models'),
-    migrationsPath: resolve(dirName, 'src', 'database', 'migrations'),
-    seedersPath: resolve(dirName, 'src', 'database', 'seeds'),
+    modelsPath: resolve(__dirname, 'src', 'models'),
+    migrationsPath: resolve(__dirname, 'src', 'database', 'migrations'),
+    seedersPath: resolve(__dirname, 'src', 'database', 'seeds'),
   },
   test: {
     username: process.env.DATABASE_USERNAME,
@@ -44,9 +41,9 @@ export default {
       timezone: 'America/Sao_Paulo',
     },
     timezone: 'America/Sao_Paulo',
-    modelsPath: resolve(dirName, 'src', 'models'),
-    migrationsPath: resolve(dirName, 'src', 'database', 'migrations'),
-    seedersPath: resolve(dirName, 'src', 'database', 'seeds'),
+    modelsPath: resolve(__dirname, 'src', 'models'),
+    migrationsPath: resolve(__dirname, 'src', 'database', 'migrations'),
+    seedersPath: resolve(__dirname, 'src', 'database', 'seeds'),
   },
   production: {
     username: process.env.DATABASE_USERNAME,
@@ -65,8 +62,8 @@ export default {
       timezone: 'America/Sao_Paulo',
     },
     timezone: 'America/Sao_Paulo',
-    modelsPath: resolve(dirName, 'src', 'models'),
-    migrationsPath: resolve(dirName, 'src', 'database', 'migrations'),
-    seedersPath: resolve(dirName, 'src', 'database', 'seeds'),
+    modelsPath: resolve(__dirname, 'src', 'models'),
+    migrationsPath: resolve(__dirname, 'src', 'database', 'migrations'),
+    seedersPath: resolve(__dirname, 'src', 'database', 'seeds'),
   },
 };
