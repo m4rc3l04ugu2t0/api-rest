@@ -13,6 +13,9 @@ import tokenRouter from './routes/token--houter.js';
 import studentRouter from './routes/student--router.js';
 import imageRouter from './routes/image--router.js';
 
+const fileName = fileURLToPath(import.meta.url);
+const dirName = dirname(fileName);
+
 class App {
   constructor() {
     this.app = express();
@@ -23,7 +26,7 @@ class App {
   middlewares() {
     this.app.use(bodyParser.urlencoded({ extends: true }));
     this.app.use(bodyParser.json());
-    this.app.use(express.static(resolve(__dirname, 'uploads')));
+    this.app.use(express.static(resolve(dirName, 'uploads')));
   }
 
   routes() {

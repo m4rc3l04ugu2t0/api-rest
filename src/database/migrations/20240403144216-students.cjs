@@ -20,6 +20,18 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull: false,
       },
+      age: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+      },
+      height: {
+        type: Sequelize.FLOAT,
+        allowNull: false,
+      },
+      weight: {
+        type: Sequelize.FLOAT,
+        allowNull: false,
+      },
       created_at: {
         type: Sequelize.DATE,
         allowNull: false,
