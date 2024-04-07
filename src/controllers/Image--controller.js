@@ -10,7 +10,7 @@ class ImageController {
     return upload(req, res, async (error) => {
       if (error) {
         return res.status(400).json({
-          errors: [error.code],
+          errors: error,
         });
       }
 

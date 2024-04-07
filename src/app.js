@@ -21,7 +21,7 @@ class App {
   middlewares() {
     this.app.use(bodyParser.urlencoded({ extends: true }));
     this.app.use(bodyParser.json());
-    this.app.use(express.static(resolve(__dirname, 'uploads')));
+    this.app.use(express.static(resolve(__dirname, '..', 'uploads')));
   }
 
   routes() {
