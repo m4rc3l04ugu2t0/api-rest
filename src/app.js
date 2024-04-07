@@ -1,9 +1,7 @@
 import 'dotenv/config.js';
 import express from 'express';
 import bodyParser from 'body-parser';
-
-import { resolve, dirname } from 'path';
-import { fileURLToPath } from 'url';
+import { resolve } from 'path';
 
 import './database/index.js';
 
