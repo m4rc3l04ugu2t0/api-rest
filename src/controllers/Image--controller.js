@@ -27,6 +27,10 @@ class ImageController {
       }
     });
   }
+
+  delete(req, res) {
+
+  }
 }
 
 export default new ImageController();
